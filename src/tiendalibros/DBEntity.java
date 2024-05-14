@@ -2,7 +2,6 @@ package tiendalibros;
 
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
 import java.sql.ResultSetMetaData;
 import java.sql.Connection;
@@ -119,6 +118,7 @@ public class DBEntity {
 			
 		}
 	}
+	
 	public String getActionMessage() {
 		return ActionMessage;
 	}
@@ -134,7 +134,7 @@ public class DBEntity {
 		stm.append(" LIMIT 0,10;");
 		ResultSet rsSet = getData(stm.toString());
 		ResultSetMetaData rsMeta = rsSet.getMetaData(); 
-		//get and print the column names, column indexes start from 1
+		
 		for(int i = 1; i<= rsMeta.getColumnCount(); i++) {
 			//String columnName= ;
 			System.out.print(rsMeta.getColumnName(i) + "\t| ");
@@ -182,48 +182,6 @@ public class DBEntity {
 	public String getDBCatalog() {
 		return _vCatalog; 
 	}
-	/*public boolean insertData(String tableName, HashMap<String, Object> data) {
-	    try {
-	        StringBuilder columns = new StringBuilder();
-	        StringBuilder values = new StringBuilder();
-	        for (String column : data.keySet()) {
-	            columns.append(column).append(",");
-	            values.append("'").append(data.get(column)).append("',");
-	        }
-	        columns.deleteCharAt(columns.length() - 1); // Eliminar la última coma
-	        values.deleteCharAt(values.length() - 1); // Eliminar la última coma
-
-	        String query = "INSERT INTO " + tableName + " (" + columns.toString() + ") VALUES (" + values.toString() + ")";
-	        return execSQL(query);
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	        return false;
-	    }
-	    }
-	public boolean updateData(String tableName, HashMap<String, Object> data, String condition) {
-	    try {
-	        StringBuilder setClause = new StringBuilder();
-	        for (String column : data.keySet()) {
-	            setClause.append(column).append("='").append(data.get(column)).append("',");
-	        }
-	        setClause.deleteCharAt(setClause.length() - 1); // Eliminar la última coma
-
-	        String query = "UPDATE " + tableName + " SET " + setClause.toString() + " WHERE " + condition;
-	        return execSQL(query);
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	        return false;
-	    }
-	}
-	public boolean deleteData(String tableName, String condition) {
-	    try {
-	        String query = "DELETE FROM " + tableName + " WHERE " + condition;
-	        return execSQL(query);
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	        return false;
-	    }
-	}*/
 }
 
 
